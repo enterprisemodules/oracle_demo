@@ -1,0 +1,39 @@
+---
+#
+# The default settings for all nodes
+#
+defaults:
+  domain_name:      example.com
+  cpucount:         1
+  needs_storage:    false
+  additional_hosts:
+    dbmaster:
+      ip: 192.168.56.10
+  box:              enterprisemodules/ol-8.1-x86_64-nocm
+  dhcp_fix:         false
+  virtualboxorafix: false
+  custom_facts:
+    deployment_zone: vagrant
+
+#
+# The default settings for all ML nodes
+#
+ml-defaults:
+  type:             masterless
+
+#
+# The default settings for all PE nodes
+#
+pe-defaults:
+  type:             pe-agent
+  puppet_master:    dbmaster
+
+
+ml-db01:
+  public_ip:        '192.168.56.190'
+  software_files: 
+  - LINUX.X64_193000_db_home.zip
+  - p6880880_190000_Linux-x86-64-12.2.0.1.33.zip    # OPatch upgrade version 12.2.0.1.33
+  - p34416665_190000_Linux-x86-64.zip               # 19c OCT2022RU
+  - p34411846_190000_Linux-x86-64.zip               # 19c OCT2022RU OJVM
+

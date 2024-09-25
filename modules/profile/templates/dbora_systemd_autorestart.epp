@@ -1,0 +1,35 @@
+<%- | String[1]      $oracle_home,
+      String[1]      $oracle_sid,
+      String[1]      $user,
+      String[1]      $group,
+      Optional[Hash] $limits = {},
+| -%>
+[Unit]
+Description=Oracle Database
+After=multi-user.target
+
+[Install]
+WantedBy=oraclelistener.service
+RequiredBy=oraclelistener.service
+
+[Service]
+ExecStart=<%= $oracle_home %>/bin/dbstart
+ExecStop=<%= $oracle_home %>/bin/dbshut
+Restart=always
+User=<%= $user %>
+Group=<%= $group %>
+Type=forking
+Environment=ORACLE_SID=<%= $oracle_sid %>
+Environment=ORACLE_HOME=<%= $oracle_home %>
+Environment=LISTENER=LISTENER
+PermissionsStartOnly=false
+TimeoutSec=300
+LimitNOFILE=<% if $limits.dig("${user}/nofile",'hard') { %><%= $limits["${user}/nofile"]['hard'] %><% } elsif $limits.dig('*/nofile','hard') { %><%= $limits['*/nofile']['hard'] %><% } else { %><%= 65536 %><% } %>
+LimitNPROC=<% if $limits.dig("${user}/nproc",'hard') { %><%= $limits["${user}/nproc"]['hard'] %><% } elsif $limits.dig('*/nproc','hard') { %><%= $limits['*/nproc']['hard'] %><% } else { %><%= 16384 %><% } %>
+LimitSTACK=<% if $limits.dig("${user}/stack",'hard') { %><%= $limits["${user}/stack"]['hard'] %>K<% } elsif $limits.dig('*/stack','hard') { %><%= $limits['*/stack']['hard'] %>K<% } else { %><%= infinity %><% } %>
+LimitMEMLOCK=<% if $limits.dig("${user}/memlock",'hard') { %><%= $limits["${user}/memlock"]['hard'] %>K<% } elsif $limits.dig('*/memlock','hard') { %><%= $limits['*/memlock']['hard'] %>K<% } else { %><%= infinity %><% } %>
+LimitCORE=<% if $limits.dig("${user}/core",'hard') { %><%= $limits["${user}/core"]['hard'] %><% } elsif $limits.dig('*/core','hard') { %><%= $limits['*/core']['hard'] %><% } else { %><%= infinity %><% } %>
+LimitDATA=<% if $limits.dig("${user}/data",'hard') { %><%= $limits["${user}/data"]['hard'] %><% } elsif $limits.dig('*/data','hard') { %><%= $limits['*/data']['hard'] %><% } else { %><%= infinity %><% } %>
+PrivateTmp=no
+
+

@@ -1,0 +1,83 @@
+---
+#------------------------------------------------------------------------------
+#
+# Set lookup merge behaviour
+#
+#------------------------------------------------------------------------------
+lookup_options:
+  "^ora_profile::database::(.*)::(.*)":
+    merge:
+      strategy: deep
+      merge_hash_arrays: true
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::source:                                            puppet:///modules/software
+ora_profile::client::software::puppet_download_mnt_point:                 puppet:///modules/software
+ora_profile::database::enable_fact_caching:                               true
+
+easy_type::generate_password_mode: development
+
+
+# ------------------------------------------------------------------------------
+#
+#  Class overrides and additions
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::rman_config:                                       ~
+ora_profile::database::fact_caching::enabled:                             true
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::dbname:                                            DB01
+ora_profile::database::version:                                           19.0.0.0
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_software
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_software::dirs:
+- /u01/backup
+- /u01/backup/DB01
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::db_patches
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::db_patches::patch_file:                            p6880880_190000_Linux-x86-64-%{lookup('ora_profile::database::db_patches::opversion')}
+ora_profile::database::db_patches::level:                                 OCT2022RU
+ora_profile::database::db_patches::include_ojvm:                          true
+
+
+# ------------------------------------------------------------------------------
+#
+#  Settings for database::rman_config
+#
+# ------------------------------------------------------------------------------
+ora_profile::database::rman_config::settings:
+  DB01:
+    archivelog_backup_copies:
+      DISK: '1'
+    backup_optimization: 'ON'
+    controlfile_autobackup: 'ON'
+    controlfile_autobackup_format:
+      DISK: '/u03/backup/DB01/%F'
+    device:
+      DISK: 'PARALLELISM 2 BACKUP TYPE TO COMPRESSED BACKUPSET'
+    encryption_algorithm: AES256
+
+
+
+ora_secured::controls::pdb_os_credential_is_not_null:                                                                          skip
+ora_secured::controls::sqlnet_crypto_checksum_server_is_set_to_required:                                                       skip

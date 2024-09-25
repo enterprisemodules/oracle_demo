@@ -1,0 +1,167 @@
+---
+role: role::oradb::simple_db
+# role: role::oradb::secure_db
+
+# #
+# # Application specific stuff
+# #
+# ora_profile::database::db_tablespaces::list:
+#   APP_TS_1@DB01:
+#     ensure:     present
+#     size:       10G
+#   APP_TS_2@DB01:
+#     ensure:   present
+#     autoextend: 'on'
+#     max_size:  10G
+#     next:    2G
+#     size:    5G
+#   TMP_TS_1:
+#     contents: 'temporary'
+#     size:    5G
+# #
+# # Database profiles
+# #
+# ora_profile::database::db_profiles::list:
+#   'DEFAULT@DB01':
+#     failed_login_attempts:  5
+
+# #
+# # Dataase users
+# #
+# ora_profile::database::db_users::list:
+#   APP_SCHEMA_1@DB01:
+#     ensure: present
+#     profile: DEFAULT
+#     default_tablespace: APP_TS_1
+#     temporary_tablespace: TMP_TS_1
+#     grants:
+#     - CREATE SESSION
+#     - RESOURCE
+
+# #
+# # Init.ora parameters
+# #
+# ora_profile::database::db_init_params::parameters:
+#   'SPFILE/OPEN_CURSORS@DB01':
+#     ensure:	present
+#     value:          600
+#   'MEMORY/OPEN_CURSORS@DB01':
+#     ensure:	present
+#     value:          600
+
+#
+#
+# This is the whole list of rules that you can skip.
+#
+# ora_secured::controls::extproc_is_not_present_in_listener_ora:                                                                 skip
+# ora_secured::controls::admin_restrictions_is_set_to_on:                                                                        skip
+# ora_secured::controls::audit_sys_operations_is_set_to_true:                                                                    skip
+# ora_secured::controls::audit_trail_is_set_to_db_xml_os_dbextended_or_xmlextended:                                              skip
+# ora_secured::controls::global_names_is_set_to_true:                                                                            skip
+# ora_secured::controls::os_roles_is_set_to_false:                                                                               skip
+# ora_secured::controls::remote_listener_is_empty:                                                                               skip
+# ora_secured::controls::remote_login_passwordfile_is_set_to_none:                                                               skip
+# ora_secured::controls::remote_os_authent_is_set_to_false:                                                                      skip
+# ora_secured::controls::remote_os_roles_is_set_to_false:                                                                        skip
+# ora_secured::controls::sec_case_sensitive_logon_is_set_to_true:                                                                skip
+# ora_secured::controls::sec_max_failed_login_attempts_is_3_or_less:                                                             skip
+# ora_secured::controls::sec_protocol_error_further_action_is_set_to_drop3:                                                      skip
+# ora_secured::controls::sec_protocol_error_trace_action_is_set_to_log:                                                          skip
+# ora_secured::controls::sec_return_server_release_banner_is_set_to_false:                                                       skip
+# ora_secured::controls::sql92_security_is_set_to_true:                                                                          skip
+# ora_secured::controls::trace_files_public_is_set_to_false:                                                                     skip
+# ora_secured::controls::resource_limit_is_set_to_true:                                                                          skip
+# ora_secured::controls::pdb_os_credential_is_not_null:                                                                          skip
+# ora_secured::controls::encryption_server_is_set_to_required:                                                                   skip
+# ora_secured::controls::sqlnet_crypto_checksum_server_is_set_to_required:                                                       skip
+# ora_secured::controls::failed_login_attempts_is_less_than_or_equal_to_5:                                                       skip
+# ora_secured::controls::password_lock_time_is_greater_than_or_equal_to_1:                                                       skip
+# ora_secured::controls::password_life_time_is_less_than_or_equal_to_90:                                                         skip
+# ora_secured::controls::password_reuse_max_is_greater_than_or_equal_to_20:                                                      skip
+# ora_secured::controls::password_reuse_time_is_greater_than_or_equal_to_365:                                                    skip
+# ora_secured::controls::password_grace_time_is_less_than_or_equal_to_5:                                                         skip
+# ora_secured::controls::password_verify_function_is_set_for_all_profiles:                                                       skip
+# ora_secured::controls::sessions_per_user_is_less_than_or_equal_to_10:                                                          skip
+# ora_secured::controls::inactive_account_time_is_less_than_or_equal_to_120:                                                     skip
+# ora_secured::controls::all_default_passwords_are_changed:                                                                      skip
+# ora_secured::controls::all_sample_data_and_users_have_been_removed:                                                            skip
+# ora_secured::controls::dba_users_authentication_type_is_not_set_to_external_for_any_user:                                      skip
+# ora_secured::controls::no_users_are_assigned_the_default_profile:                                                              skip
+# ora_secured::controls::sys_user_mig_has_been_dropped:                                                                          skip
+# ora_secured::controls::no_public_database_links_exist:                                                                         skip
+# ora_secured::controls::execute_is_revoked_from_public_on_network_packages:                                                     skip
+# ora_secured::controls::execute_is_revoked_from_public_on_file_system_packages:                                                 skip
+# ora_secured::controls::execute_is_revoked_from_public_on_encryption_packages:                                                  skip
+# ora_secured::controls::execute_is_revoked_from_public_on_java_packages:                                                        skip
+# ora_secured::controls::execute_is_revoked_from_public_on_job_scheduler_packages:                                               skip
+# ora_secured::controls::execute_is_revoked_from_public_on_sql_injection_helper_packages:                                        skip
+# ora_secured::controls::execute_is_revoked_from_public_on_dbms_credential_package:                                              skip
+# ora_secured::controls::execute_is_not_granted_to_public_on_non_default_packages:                                               skip
+# ora_secured::controls::all_is_revoked_from_unauthorized_grantee_on_aud:                                                        skip
+# ora_secured::controls::all_is_revoked_from_unauthorized_grantee_on_dba:                                                        skip
+# ora_secured::controls::all_is_revoked_on_sensitive_tables:                                                                     skip
+# ora_secured::controls::any_is_revoked_from_unauthorized_grantee:                                                               skip
+# ora_secured::controls::dba_sys_privs_is_revoked_from_unauthorized_grantee_with_admin_option_set_to_yes:                        skip
+# ora_secured::controls::execute_any_procedure_is_revoked_from_outln:                                                            skip
+# ora_secured::controls::execute_any_procedure_is_revoked_from_dbsnmp:                                                           skip
+# ora_secured::controls::select_any_dictionary_is_revoked_from_unauthorized_grantee:                                             skip
+# ora_secured::controls::select_any_table_is_revoked_from_unauthorized_grantee:                                                  skip
+# ora_secured::controls::audit_system_is_revoked_from_unauthorized_grantee:                                                      skip
+# ora_secured::controls::exempt_access_policy_is_revoked_from_unauthorized_grantee:                                              skip
+# ora_secured::controls::become_user_is_revoked_from_unauthorized_grantee:                                                       skip
+# ora_secured::controls::create_procedure_is_revoked_from_unauthorized_grantee:                                                  skip
+# ora_secured::controls::alter_system_is_revoked_from_unauthorized_grantee:                                                      skip
+# ora_secured::controls::create_any_library_is_revoked_from_unauthorized_grantee:                                                skip
+# ora_secured::controls::create_library_is_revoked_from_unauthorized_grantee:                                                    skip
+# ora_secured::controls::grant_any_object_privilege_is_revoked_from_unauthorized_grantee:                                        skip
+# ora_secured::controls::grant_any_role_is_revoked_from_unauthorized_grantee:                                                    skip
+# ora_secured::controls::grant_any_privilege_is_revoked_from_unauthorized_grantee:                                               skip
+# ora_secured::controls::select_catalog_role_is_revoked_from_unauthorized_grantee:                                               skip
+# ora_secured::controls::execute_catalog_role_is_revoked_from_unauthorized_grantee:                                              skip
+# ora_secured::controls::dba_is_revoked_from_unauthorized_grantee:                                                               skip
+# ora_secured::controls::audit_admin_is_revoked_from_unauthorized_grantee:                                                       skip
+# ora_secured::controls::user_audit_option_is_enabled:                                                                           skip
+# ora_secured::controls::role_audit_option_is_enabled:                                                                           skip
+# ora_secured::controls::system_grant_audit_option_is_enabled:                                                                   skip
+# ora_secured::controls::profile_audit_option_is_enabled:                                                                        skip
+# ora_secured::controls::database_link_audit_option_is_enabled:                                                                  skip
+# ora_secured::controls::public_database_link_audit_option_is_enabled:                                                           skip
+# ora_secured::controls::public_synonym_audit_option_is_enabled:                                                                 skip
+# ora_secured::controls::synonym_audit_option_is_enabled:                                                                        skip
+# ora_secured::controls::directory_audit_option_is_enabled:                                                                      skip
+# ora_secured::controls::select_any_dictionary_audit_option_is_enabled:                                                          skip
+# ora_secured::controls::grant_any_object_privilege_audit_option_is_enabled:                                                     skip
+# ora_secured::controls::grant_any_privilege_audit_option_is_enabled:                                                            skip
+# ora_secured::controls::drop_any_procedure_audit_option_is_enabled:                                                             skip
+# ora_secured::controls::all_audit_option_on_sys_aud_is_enabled:                                                                 skip
+# ora_secured::controls::procedure_audit_option_is_enabled:                                                                      skip
+# ora_secured::controls::alter_system_audit_option_is_enabled:                                                                   skip
+# ora_secured::controls::trigger_audit_option_is_enabled:                                                                        skip
+# ora_secured::controls::create_session_audit_option_is_enabled:                                                                 skip
+# ora_secured::controls::create_user_action_audit_is_enabled:                                                                    skip
+# ora_secured::controls::alter_user_action_audit_is_enabled:                                                                     skip
+# ora_secured::controls::drop_user_audit_option_is_enabled:                                                                      skip
+# ora_secured::controls::create_role_action_audit_is_enabled:                                                                    skip
+# ora_secured::controls::alter_role_action_audit_is_enabled:                                                                     skip
+# ora_secured::controls::drop_role_action_audit_is_enabled:                                                                      skip
+# ora_secured::controls::grant_action_audit_is_enabled:                                                                          skip
+# ora_secured::controls::revoke_action_audit_is_enabled:                                                                         skip
+# ora_secured::controls::create_profile_action_audit_is_enabled:                                                                 skip
+# ora_secured::controls::alter_profile_action_audit_is_enabled:                                                                  skip
+# ora_secured::controls::drop_profile_action_audit_is_enabled:                                                                   skip
+# ora_secured::controls::create_database_link_action_audit_is_enabled:                                                           skip
+# ora_secured::controls::alter_database_link_action_audit_is_enabled:                                                            skip
+# ora_secured::controls::drop_database_link_action_audit_is_enabled:                                                             skip
+# ora_secured::controls::create_synonym_action_audit_is_enabled:                                                                 skip
+# ora_secured::controls::alter_synonym_action_audit_is_enabled:                                                                  skip
+# ora_secured::controls::drop_synonym_action_audit_is_enabled:                                                                   skip
+# ora_secured::controls::select_any_dictionary_privilege_audit_is_enabled:                                                       skip
+# ora_secured::controls::audsys_aud_unified_access_audit_is_enabled:                                                             skip
+# ora_secured::controls::create_procedure_function_package_package_body_action_audit_is_enabled:                                 skip
+# ora_secured::controls::alter_procedure_function_package_package_body_action_audit_is_enabled:                                  skip
+# ora_secured::controls::drop_procedure_function_package_package_body_action_audit_is_enabled:                                   skip
+# ora_secured::controls::alter_system_action_audit_is_enabled:                                                                   skip
+# ora_secured::controls::create_trigger_action_audit_is_enabled:                                                                 skip
+# ora_secured::controls::alter_trigger_action_audit_is_enabled:                                                                  skip
+# ora_secured::controls::drop_trigger_action_audit_is_enabled:                                                                   skip
+# ora_secured::controls::logon_and_logoff_actions_audit_is_enabled:                                                              skip
