@@ -12,7 +12,7 @@ else
 
   echo "Using released versions of modules..."
   PUPPETFILE="Puppetfile"
-  /opt/puppetlabs/puppet/bin/r10k puppetfile install --puppetfile "${BASE_DIR}/${PUPPETFILE}" --force
+  /opt/puppetlabs/puppet/bin/r10k puppetfile install --puppetfile "${BASE_DIR}/${PUPPETFILE}" --moduledir="${BASE_DIR}/modules" --force --verbose
 
   setup_directory() {
     local dirname="$1"
