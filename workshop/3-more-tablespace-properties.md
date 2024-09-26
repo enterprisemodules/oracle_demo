@@ -4,7 +4,7 @@ The previous example was very elementary. In reality, you probably need more opt
 
 ## Autoextend
 
-Let's ensure that a second tablespace `APP_TS_2` is available and that it will auto-extend. The initial size we need is `5G,` any increments created are '2G' and the maximum size we allow is `10G`. Here is the definition of this tablespace. Let's add this to the node hieradata and re-run Puppet
+Let's ensure that a second tablespace `APP_TS_2` is available and that it will auto-extend. The initial size we need is `5G,` any increments created are `2G` and the maximum size we allow is `10G`. Here is the definition of this tablespace. Let's add this to the node hieradata and re-run Puppet
 
 ```yaml
 #
@@ -36,7 +36,7 @@ Notice: /Stage[main]/Ora_profile::Database::Db_tablespaces/Ora_tablespace[APP_TS
 
 ## A temporary tablespace
 
-Let's add the 'TMP_TS_1` temporary tablespace. Here is the hiera data you have to **add** to the of the list of tablespaces. 
+Let's add the `TMP_TS_1` temporary tablespace. Here is the hiera data you have to **add** to the of the list of tablespaces. 
 
 ```yaml
 ora_profile::database::db_tablespaces::list:
@@ -54,7 +54,7 @@ Notice: /Stage[main]/Ora_profile::Database::Db_tablespaces/Ora_tablespace[TMP_TS
 
 ## An undo tablespace
 
-Let's add the 'UNDO_TS_1` undo tablespace. Here is the hiera data you have to **add** to the of the list of tablespaces. 
+Let's add the `UNDO_TS_1` undo tablespace. Here is the hiera data you have to **add** to the of the list of tablespaces. 
 
 ```yaml
 ora_profile::database::db_tablespaces::list:

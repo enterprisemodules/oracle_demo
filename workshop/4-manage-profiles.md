@@ -1,6 +1,6 @@
 # Manage profiles
 
-One of the other database objects that are easy to manage with our Puppet modules is the database profile. A very common use-case is that we wish to change the properties of the default profile.  The standard `DEFAULT` profile allows 10 failed login attempts before taking action. We want to change that to 5. Let's go ahead and do this with Puppet.
+One of the other database objects that are easy to manage with our Puppet modules is the database profile. A very common use-case is that we wish to change the properties of the default profile. The standard `DEFAULT` profile allows 10 failed login attempts before taking action. We want to change that to 5. Let's go ahead and do this with Puppet.
 
 Go to the directory `/etc/puppetlabs/code/environments/production/hieradata/` and open the file `edit_in_workshop.yaml`. This file contains all the node-specific data. 
 

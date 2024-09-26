@@ -4,9 +4,9 @@ Puppet is not only very easy when creating (or ensuring) tablespaces. It is also
 
 ## Add some changes
 
-A very common use-case is to change the size and the max size of the tablespace. Let increase the size from 5G to 10G  
+A very common use case is to change the size and the max size of the tablespace. Let's increase the size from 5G to 10G  
 
-Let's open the node-specific data file again. Go to the directory `/etc/puppetlabs/code/environments/production/hieradata/` and open the file `edit_in_workshop.yaml` again. Replace the current setting for  `ora_profile::database::db_tablespaces::list` to this one:
+Let's open the node-specific data file again. Go to the directory `/etc/puppetlabs/code/environments/production/hieradata/` and open the file `edit_in_workshop.yaml` again. Replace the current setting for `ora_profile::database::db_tablespaces::list` with this one:
 
 ```yaml
 #

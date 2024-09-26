@@ -2,9 +2,9 @@
 
 You can also manage your database parameters with Puppet. When managing these with `SQL` you can use  `BOTH` to manage both the `MEMORY` and the `SPFILE` setting. With Puppet these are two distinctive values. Values that you have to manage separately.
 
-Let's change the maxmimum number of open cursors for this database from `300` to `600`.
+Let's change the maximum number of open cursors for this database from `300` to `600`.
 
-For managing database users, we can use the hiera key `oora_profile::database::db_init_params::parameters`.
+For managing database users, we can use the hiera key `ora_profile::database::db_init_params::parameters`.
 
 Go to the directory `/etc/puppetlabs/code/environments/production/hieradata/` and open the file `edit_in_workshop.yaml`. This file contains all the node-specific data. 
 

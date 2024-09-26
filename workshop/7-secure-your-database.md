@@ -1,14 +1,14 @@
 # Secure your database
 
-A standard installed Oracle database is pretty open. Meaning insecure. The Center For Internet Security (CIS) has defined a benchmark for Oracle database security. With Puppet it is pretty easy to apply this benchmark to your database and make your database secure.
+A standard installed Oracle database is pretty open. Meaning insecure. The Center For Internet Security (CIS) has defined a benchmark for Oracle database security. With Puppet, it is pretty easy to apply this benchmark to your database and make your database secure.
 
 ## Apply the CIS benchmark
 
-Go to the directory `/etc/puppetlabs/code/environments/production/hieradata/` and open the file `edit_in_workshop.yaml`. This file contains all the node-specific data. Now look for the line that starts with `role`. It now contains the string : `role::database`. To make your database a secured database, you need to change it to `role::secured_database`.
+Go to the directory `/etc/puppetlabs/code/environments/production/hieradata/` and open the file `edit_in_workshop.yaml`. This file contains all the node-specific data. Now look for the line that starts with `role`. It now contains the string: `role::database`. To make your database a secured database, you need to change it to `role::secured_database`.
 
 ## First noop Puppet run
 
-When you run Puppet now for the first time, it wil start inspecting the security and directly fix it. This is probably not what you want right now. For now to see what it will change, we will use the `--noop` switch for Puppet.
+When you run Puppet now for the first time, it will start inspecting the security and directly fix it. This is probably not what you want right now. For now, to see what it will change, we will use the `--noop` switch for Puppet.
 
 ``` bash
 puppet apply site.pp --noop
