@@ -8,12 +8,11 @@ if [[ -f /var/log/setup_puppet.done ]]; then
   echo "Puppet already setup"
 else
   echo 'Installing required gems'
-  /opt/puppetlabs/puppet/bin/gem install r10k specific_install --no-document > /dev/null
-  /opt/puppetlabs/puppet/bin/gem specific_install -l https://github.com/enterprisemodules/puppet-resource_api.git -b fix_issue_314
+  /opt/puppetlabs/puppet/bin/gem install r10k  --no-document
 
   echo "Using released versions of modules..."
   PUPPETFILE="Puppetfile"
-  /opt/puppetlabs/puppet/bin/r10k puppetfile install --puppetfile "${BASE_DIR}/${PUPPETFILE}" --force > /dev/null
+  /opt/puppetlabs/puppet/bin/r10k puppetfile install --puppetfile "${BASE_DIR}/${PUPPETFILE}" --force
 
   setup_directory() {
     local dirname="$1"
