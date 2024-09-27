@@ -2,6 +2,16 @@
 role: role::oradb::simple_db
 # role: role::oradb::secure_db
 
+#
+# Although not part of this workshop. Applying the latest patches can be done by setting the next parameter.
+#
+ora_profile::database::db_patches::level:                                 OCT2022RU
+#
+# The next parameter can be used to schedule a patch window. This specific setting will patch always.
+#
+ora_profile::database::patch_window:                                      '0:00 - 23:59'
+
+
 # #
 # # Application specific stuff
 # #
