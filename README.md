@@ -4,7 +4,7 @@
 
 ## Required software
 
-For the box to run it needs a Oracle Database software.
+For the box to run it needs Oracle Database software.
 
 
 - `LINUX.X64_193000_db_home.zip`                  (19c oracle home)
@@ -31,7 +31,7 @@ vagrant up ml-db01
 
 ## Running puppet
 
-Although puppet normaly is running client-server mode, for simplicity in this demo we will use the masterless approach. That means you have to run puppet manualy. The command is:
+Although puppet normally is running client-server mode, for simplicity in this demo we will use the masterless approach. That means you have to run puppet manually. The command is:
 
 ```
 puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
@@ -41,6 +41,13 @@ The basic `vagrant up` will already run puppet for the first time.
 
 
 ## Experimenting with Puppet for Oracle
+
+To enter the VM execute the next command:
+
+```bash
+vagrant ssh ml-db01
+```
+This will log you in to the vagrant user. Remember that puppet needs to be run with root privileges. So after gaining access to the vagrant user, you have to execute `sudo -i` to get root privileges.
 
 - [intro](workshop/intro.md)
 - [Ensure Tablespaces](workshop/1-ensure-tablespaces.md)

@@ -21,7 +21,7 @@ ora_profile::database::db_tablespaces::list:
 and re-run Puppet again:
 
 ``` bash
-puppet apply site.pp 
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 If you look at the output, you see this:
@@ -33,7 +33,7 @@ Notice: /Stage[main]/Ora_profile::Database::Db_tablespaces/Ora_tablespace[APP_TS
 As a final check, let's re-run Puppet and see if this change is also idempotent.
 
 ``` bash
-puppet apply site.pp 
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 No changes were detected, so it is indeed idempotent.

@@ -11,7 +11,7 @@ Go to the directory `/etc/puppetlabs/code/environments/production/hieradata/` an
 When you run Puppet now for the first time, it will start inspecting the security and directly fix it. This is probably not what you want right now. For now, to see what it will change, we will use the `--noop` switch for Puppet.
 
 ``` bash
-puppet apply site.pp --noop
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp--noop
 ```
 
 You'll see a large list of things that Puppet would change. The generated notices look like this:
@@ -31,7 +31,7 @@ In the `edit_in_workshop.yaml` file at the bottom you see a commented out list o
 No when we run Puppet, the warning will no longer be issues.
 
 ``` bash
-puppet apply site.pp --noop
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp--noop
 ```
 
 ## The real deal

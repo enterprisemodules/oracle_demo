@@ -20,7 +20,7 @@ ora_profile::database::db_profiles::list:
 Puppet runs will read this data and make sure the profile is available with the specified properties. Puppet will detect that the profile has a different value for `failed_login_attemps`, and it will change the value.
 
 ``` bash
-puppet apply site.pp 
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 Let's inspect the Puppet output. Somewhere near the top you'll see:
@@ -44,7 +44,7 @@ One of the essential features of Puppet is that it is idempotent. Idempotent mea
 Let's verify that and rerun Puppet:
 
 ``` bash
-puppet apply site.pp 
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 We still see the message at the top that Puppet manages the profile, but we no longer have the creation message, just as we expected.
 

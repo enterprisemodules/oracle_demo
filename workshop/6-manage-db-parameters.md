@@ -28,7 +28,7 @@ ora_profile::database::db_init_params::parameters:
 Puppet runs will read this data and make sure the parameters are available and have the correct value. Puppet will detect that the parameters have a different value since we will apply Puppet for the first time with this data. 
 
 ``` bash
-puppet apply site.pp 
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 Let's inspect the Puppet output. Somewhere near the top you'll see:
@@ -55,7 +55,7 @@ One of the essential features of Puppet is that it is idempotent. Idempotent mea
 Let's verify that and rerun Puppet:
 
 ``` bash
-puppet apply site.pp 
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 We still see the message at the top that Puppet manages the user, but we no longer have the creation message, just as we expected.

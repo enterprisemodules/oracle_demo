@@ -29,7 +29,7 @@ ora_profile::database::db_users::list:
 Puppet runs will read this data and make sure the database user is available with the specified properties. Puppet will detect that the user is unknown and create it since we will apply Puppet for the first time with this data. 
 
 ``` bash
-puppet apply site.pp 
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 Let's inspect the Puppet output. Somewhere near the top you'll see:
@@ -53,7 +53,7 @@ One of the essential features of Puppet is that it is idempotent. Idempotent mea
 Let's verify that and rerun Puppet:
 
 ``` bash
-puppet apply site.pp 
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 We still see the message at the top that Puppet manages the user, but we no longer have the creation message, just as we expected.
@@ -86,7 +86,7 @@ We are going to make the interactive user: `APP_USER_1`. The `APP_USER_1` databa
 Puppet runs will read this data and make sure the database user is available with the specified properties. Puppet will detect that the user is unknown and create it since we will apply Puppet for the first time with this data. 
 
 ``` bash
-puppet apply site.pp 
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 Let's inspect the Puppet output. Somewhere near the top you'll see:
@@ -110,7 +110,7 @@ One of the essential features of Puppet is that it is idempotent. Idempotent mea
 Let's verify that and rerun Puppet:
 
 ``` bash
-puppet apply site.pp 
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 ## More information

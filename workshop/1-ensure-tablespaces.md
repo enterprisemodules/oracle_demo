@@ -23,7 +23,7 @@ This data tells Puppet to ensure that the tablespace `APP_TS_1` needs to be avai
 Puppet runs will read this data and make sure the tablespace is available with the specified properties. Puppet will detect that the tablespace is unknown and create it since we will apply Puppet for the first time with this data. 
 
 ``` bash
-puppet apply site.pp 
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 Let's inspect the Puppet output. Somewhere near the top you'll see:
@@ -47,7 +47,7 @@ One of the essential features of Puppet is that it is idempotent. Idempotent mea
 Let's verify that and rerun Puppet:
 
 ``` bash
-puppet apply site.pp 
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 We still see the message at the top that Puppet manages the tablespace, but we no longer have the creation message, just as we expected.
