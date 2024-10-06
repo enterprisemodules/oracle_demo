@@ -11,7 +11,7 @@ Go to the directory `/etc/puppetlabs/code/environments/production/hieradata/` an
 When you run Puppet now for the first time, it will start inspecting the security and directly fix it. This is probably not what you want right now. For now, to see what it will change, we will use the `--noop` switch for Puppet.
 
 ``` bash
-puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp--noop
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp --noop
 ```
 
 You'll see a large list of things that Puppet would change. The generated notices look like this:
@@ -39,7 +39,7 @@ puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp--noo
 You probably will have to apply more customisations for your database, but for teaching porposes, we are ready to apply all these changes to the database. Let's run Puppet for real:
 
 ``` bash
-puppet apply site.pp
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 [Continue to the next step](./epilogue.md)

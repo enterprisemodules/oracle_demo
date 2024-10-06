@@ -25,7 +25,7 @@ ora_profile::database::db_tablespaces::list:
 And run Puppet:
 
 ```
-puppet apply site.pp
+puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 ```
 
 We see:
