@@ -13,7 +13,7 @@ Now add this data to it:
 ora_profile::database::db_tablespaces::list:
   APP_TS_1@DB01:
     ensure:     present
-    size:       5G
+    size:       200M
 ```
 
 This data tells Puppet to ensure that the tablespace `APP_TS_1` needs to be available with the specified size. Make sure that you safe the changes before continuing. See [the documentation](https://www.enterprisemodules.com/docs/ora_config/ora_tablespace.html) what kind of properties you can use.

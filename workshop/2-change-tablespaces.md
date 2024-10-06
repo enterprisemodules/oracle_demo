@@ -15,7 +15,7 @@ Let's open the node-specific data file again. Go to the directory `/etc/puppetla
 ora_profile::database::db_tablespaces::list:
   APP_TS_1@DB01:
     ensure:     present
-    size:       10G
+    size:       400M
 ```
 
 and re-run Puppet again:
@@ -27,7 +27,7 @@ puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 If you look at the output, you see this:
 
 ```
-Notice: /Stage[main]/Ora_profile::Database::Db_tablespaces/Ora_tablespace[APP_TS_1@DB01]/size: size changed 5368709120 to 10737418240
+Notice: /Stage[main]/Ora_profile::Database::Db_tablespaces/Ora_tablespace[APP_TS_1@DB01]/size:  size changed 209715200 to 419430400
 ```
 
 As a final check, let's re-run Puppet and see if this change is also idempotent.

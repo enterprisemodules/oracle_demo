@@ -18,16 +18,19 @@ ora_profile::database::patch_window:                                      '0:00 
 # ora_profile::database::db_tablespaces::list:
 #   APP_TS_1@DB01:
 #     ensure:     present
-#     size:       10G
+#     size:       200M
 #   APP_TS_2@DB01:
 #     ensure:   present
 #     autoextend: 'on'
-#     max_size:  10G
-#     next:    2G
-#     size:    5G
-#   TMP_TS_1:
+#     max_size:  200M
+#     next:    100M
+#     size:    200M
+#   TMP_TS_1@DB01:
 #     contents: 'temporary'
-#     size:    5G
+#     size:    200M
+#   UNDO_TS_1@DB01:
+#     contents: 'undo'
+#     size:    200M
 # #
 # # Database profiles
 # #

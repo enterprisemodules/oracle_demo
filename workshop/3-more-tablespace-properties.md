@@ -13,13 +13,13 @@ Let's ensure that a second tablespace `APP_TS_2` is available and that it will a
 ora_profile::database::db_tablespaces::list:
   APP_TS_1@DB01:
     ensure:     present
-    size:       10G
+    size:       400M
   APP_TS_2@DB01:
     ensure:   present
     autoextend: 'on'
-    max_size:  10G
-    next:    2G
-    size:    5G
+    max_size:  200M
+    next:    100M
+    size:    200M
 ```
 
 And run Puppet:
@@ -41,9 +41,9 @@ Let's add the `TMP_TS_1` temporary tablespace. Here is the hiera data you have t
 ```yaml
 ora_profile::database::db_tablespaces::list:
 ...
-  TMP_TS_1:
+  TMP_TS_1@DB01:
     contents: 'temporary'
-    size:    5G
+    size:    200M
 ```
 
 When we run Puppet, we see:
@@ -59,9 +59,9 @@ Let's add the `UNDO_TS_1` undo tablespace. Here is the hiera data you have to **
 ```yaml
 ora_profile::database::db_tablespaces::list:
 ...
-  UNDO_TS_1:
+  UNDO_TS_1@DB01:
     contents: 'undo'
-    size:    5G
+    size:    200M
 ```
 
 When we run Puppet, we see:
